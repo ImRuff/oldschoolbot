@@ -1,4 +1,5 @@
 const { Command } = require('klasa');
+const raids = require('../../../data/monsters/raids');
 
 module.exports = class extends Command {
 
@@ -74,7 +75,9 @@ module.exports = class extends Command {
 			case 'OLMLET':
 			case 'OLM':
 			case 'RAIDS':
-				return msg.send(`You had to do ${this.petRoll(3000)} Raids to get the Olmlet Pet! <:Olmlet:324127376873357316>`);
+				const dropItemName = raids.determineItem();
+				amount = this.petRoll(3000);
+				return msg.send(`You had to do ${amount.toLocaleString()} Raids to get the Olmlet Pet! <:Olmlet:324127376873357316>\nYou received a ${dropItemName.name} ${dropItemName.emoji} with the Olmlet.`);
 			case 'CHAOSELEMENTAL':
 			case 'CHAOSELE':
 				return msg.send(`You had to kill the Chaos Elemental ${this.petRoll(300)} times to get the Chaos Elemental Pet! <:Pet_chaos_elemental:324127377070227456>`);
