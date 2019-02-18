@@ -811,10 +811,10 @@ ${lootMSG.join('\n')}`);
 						const itemRecievedWithPet = raids.determineItem();
 						if (!theDrops.has(raids.drops.pet.shortName)) {
 							theDrops.set(raids.drops.pet.shortName, { theKC: `**${raids.drops.pet.name}:** ${kc} KC ${raids.drops.pet.emoji} with ${itemRecievedWithPet.emoji}`, dup: 0 });
-						}	else 	{ 
-								theDrops.get(raids.drops.pet.shortName).theKC.concat(` ${itemRecievedWithPet.emoji}`);
-								theDrops.get(raids.drops.pet.shortName).dup++; 
-							}
+						} else 	{
+							theDrops.get(raids.drops.pet.shortName).theKC += ` ${itemRecievedWithPet.emoji}`;
+							theDrops.get(raids.drops.pet.shortName).dup++; 
+						}
 					}
 
 					dropRecieved = raids.determineItem();
