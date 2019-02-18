@@ -808,9 +808,13 @@ ${lootMSG.join('\n')}`);
 					kc++;
 					if (!roll(25)) continue;
 					if (roll(65)) {
+						const itemRecievedWithPet = raids.determineItem();
 						if (!theDrops.has(raids.drops.pet.shortName)) {
-							theDrops.set(raids.drops.pet.shortName, { theKC: `**${raids.drops.pet.name}:** ${kc} KC ${raids.drops.pet.emoji}`, dup: 0 });
-						}	else 	{ theDrops.get(raids.drops.pet.shortName).dup++; }
+							theDrops.set(raids.drops.pet.shortName, { theKC: `**${raids.drops.pet.name}:** ${kc} KC ${raids.drops.pet.emoji} with ${itemRecievedWithPet.emoji}`, dup: 0 });
+						}	else 	{ 
+								theDrops.get(raids.drops.pet.shortName).theKC.concat(` ${itemRecievedWithPet.emoji}`);
+								theDrops.get(raids.drops.pet.shortName).dup++; 
+							}
 					}
 
 					dropRecieved = raids.determineItem();
